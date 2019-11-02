@@ -1,0 +1,332 @@
+$colorTimeLine: #A7A7A7;
+$color: #34495E;
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: #f2f2f2;
+    font-family: 'Roboto',sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+}
+
+.container{
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 100px 1fr 30px;
+    grid-template-areas: "header" "main" "footer";
+
+    header{
+        text-align: center;
+        grid-area: header;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        position: relative;
+
+        p{
+            font-size: 24px;
+            font-weight: 500;
+            color: #414141;
+
+            &:after{
+                content: '';
+                display: block;
+                width: 30px;
+                height: 2px;
+                background: #707070;
+                margin: 0 auto;
+                margin-top: 10px;
+            }
+        }
+    }
+    
+    .main{
+        grid-area: main;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 50px 0px;
+
+        .timeline{
+            width: 50%;
+            padding: 30px 40px;
+            
+            .comment{
+                width: 50%;
+                border-radius: 10px;
+                background: #fff;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                padding: 10px;
+                box-shadow: 1px 1px 3px rgba($color: #000, $alpha: 0.3);
+
+                .comment-header{
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+
+                    .title{
+                        h6{
+                            font-size: 16px;
+                            font-weight: 500;
+                            color: $color;
+                            margin-bottom: 5px;
+                        }
+                    }
+
+                    .comment-time{
+                        margin-top: 3px;
+                        span{
+                            font-size: 10px;
+                            font-weight: 300;
+                        }
+                    }
+                }
+
+                .comment-info{
+                    p{
+                        font-size: 12px;
+                        margin-bottom: 10px;
+                    }
+                }
+
+                .comment-user{
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+
+                    .user-photo{
+                        margin-right: 5px;
+                        
+                        img{
+                            width: 30px;
+                            height: 30px;
+                            object-fit: cover;
+                            object-position: center;
+                        }
+                    }
+                }
+
+                .user-info{
+                    width: 100%;
+                    text-align: left;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    .username{
+                        margin-top: 3px;
+                        p{
+                            font-size: 11px;
+                            font-weight: 500;
+                            color: $color;
+                        }
+                    }
+
+                    .typeuser{
+                        p{
+                            font-size: 10px;
+                            font-weight: 400;
+                            font-style: italic;
+                            color: $color;
+                        }
+                    }
+                }
+            }
+
+            
+            &:nth-child(odd){
+                border-right: 2px solid $colorTimeLine;
+                margin-left: 2px;
+                .comment{
+                    float: right;
+
+                    // Circulo
+                    &:after{
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        right: -54px;
+                        width: 10px;
+                        height: 10px;
+                        background: #fff;
+                        border-radius: 50%;
+                        border: 7px solid $color;
+                    }
+
+                    // line
+                    &:before{
+                        content: '';
+                        position: absolute;
+                        top: 12px;
+                        right: -30px;
+                        width: 30px;
+                        height: 2px;
+                        background: $color;
+                    }
+
+                    .comment-date{
+                        position: absolute;
+                        top: 4px;
+                        right: -145px;
+                        font-size: 14px;
+                        font-weight: 500;
+                        color: $color;
+                        text-align: left;
+                    }
+                }
+            }
+
+            &:nth-child(even){
+                border-left: 2px solid $colorTimeLine;
+                margin-left: auto;
+                .comment{
+                    float: left;
+
+                    // Circulo
+                    &:after{
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: -54px;
+                        width: 10px;
+                        height: 10px;
+                        background: #fff;
+                        border-radius: 50%;
+                        border: 7px solid $color;
+                    }
+
+                    // line
+                    &:before{
+                        content: '';
+                        position: absolute;
+                        top: 12px;
+                        left: -30px;
+                        width: 30px;
+                        height: 2px;
+                        background: $color;
+                    }
+
+                    .comment-date{
+                        position: absolute;
+                        top: 4px;
+                        left: -145px;
+                        font-size: 14px;
+                        font-weight: 500;
+                        color: $color;
+                        text-align: right;
+                    }
+                }
+            }
+        }
+
+    }
+    
+    footer{
+        grid-area: footer;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        p{
+            font-size: 12px;
+            color: #4F9FCF;
+        }
+    }
+}
+
+@media screen and (max-width:1000px){
+    .container{
+        .main{
+            .timeline{
+                .comment{
+                    width: 70%;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:750px){
+    .container{
+        .main{
+            .timeline{
+                .comment{
+                    width: 80%;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:700px){
+    .container{
+        .main{
+            .timeline{
+                .comment{
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:520px){
+    .container{
+        .main{
+            .timeline{
+                .comment{
+                    width: 100%;
+
+                    .comment-header{
+                        display: flex;
+                        flex-direction: column;
+
+                        .comment-time{
+                            width: 100%;
+                            position: absolute;
+                            background: transparent;
+                            top: -10px;
+                            left: 0;
+                            margin: 0;
+                            text-align: center;
+
+                            span{
+                                background: #fff;
+                                padding: 2px 5px;
+                                border-radius: 5px;
+                                box-shadow: -0px -0px 2px rgba($color: #000, $alpha: 0.3);
+                            }
+                        }
+                    }
+
+                    .comment-user{
+                        display: flex;
+                        flex-direction: column;
+                        
+                        .user-photo, .user-info{
+                            text-align: center;
+                        }
+
+                        .user-info{
+                            .typeuser{
+                                p{
+                                    font-style: normal;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
